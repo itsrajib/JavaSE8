@@ -25,7 +25,7 @@ public class Main {
 		thread.start();
 		
 		//using lambda
-		new Thread(()->{System.out.println("Thread using Runnable interface (lamda)");}).start();
+		new Thread(()->System.out.println("Thread using Runnable interface (lamda)")).start();
 		
 		//some other task for default main thread
 		for (int i = 0; i < 5; ++i) {
