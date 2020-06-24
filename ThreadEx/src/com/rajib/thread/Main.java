@@ -1,5 +1,5 @@
 /**
- * create and run a simple thread
+ * create and run a simple thread using java.lang.Thread class
  */
 package com.rajib.thread;
 
