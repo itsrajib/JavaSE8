@@ -8,40 +8,37 @@ package com.rajib.deadlock;
  *
  */
 
-class Deadlock{
-	
-	Object obj1 = new Object();
-	Object obj2 = new Object();
-}
-
 public class DeadlockDemo {
 
 	public static void main(String[] args) {
 		
-		Deadlock deadlock = new Deadlock();
+		Object obj1 = new Object();
+		Object obj2 = new Object();
 
 		Thread thread1 = new Thread(() -> {
-			synchronized (deadlock.obj1) {
+			synchronized (obj1) {
 				System.out.println("Thread 1 obj 1 locked");
 				
-				synchronized (deadlock.obj2) {
+				synchronized (obj2) {
 					System.out.println("Thread 1 obj 2 locked");
 				}
 			}
 		});
 		
+		thread1.setName("Thread-1");
 		thread1.start();
 		
 		Thread thread2 = new Thread(() -> {
-			synchronized (deadlock.obj2) {
+			synchronized (obj2) {
 				System.out.println("Thread 2 obj 2 locked");
 				
-				synchronized (deadlock.obj1) {
+				synchronized (obj1) {
 					System.out.println("Thread 2 obj 1 locked");
 				}
 			}
 		});
 		
+		thread2.setName("Thread-2");
 		thread2.start();
 	}
 
